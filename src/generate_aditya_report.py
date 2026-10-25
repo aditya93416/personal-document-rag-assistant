@@ -234,74 +234,197 @@ def create_report():
         doc.add_paragraph().paragraph_format.space_after = Pt(6)
 
     # -------------------------------------------------------------
-    # 1. COVER PAGE
+    # 1. COVER PAGE (Exact Replica of Gautam_Kumar_Internship_Report Layout)
     # -------------------------------------------------------------
-    p_inst = doc.add_paragraph()
-    p_inst.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_inst.paragraph_format.space_after = Pt(2)
-    r_uni = p_inst.add_run("HARIDWAR UNIVERSITY, ROORKEE")
-    r_uni.font.name = "Calibri"
-    r_uni.bold = True
-    r_uni.font.size = Pt(19)
-    r_uni.font.color.rgb = COLOR_PRIMARY
+    # Table 1: Header Banner (Navy #003366, White Text)
+    t1 = doc.add_table(rows=1, cols=1)
+    t1.alignment = WD_TABLE_ALIGNMENT.CENTER
+    c1 = t1.rows[0].cells[0]
+    c1.width = Inches(6.5)
+    set_cell_background(c1, "003366")
+    set_cell_margins(c1, top=140, bottom=140, left=180, right=180)
+    p_t1 = c1.paragraphs[0]
+    p_t1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_t1.paragraph_format.space_after = Pt(0)
+    p_t1.paragraph_format.line_spacing = 1.15
+    r_u = p_t1.add_run("HARIDWAR UNIVERSITY \n")
+    r_u.bold = True
+    r_u.font.name = "Calibri"
+    r_u.font.size = Pt(18)
+    r_u.font.color.rgb = RGBColor(255, 255, 255)
+    r_loc = p_t1.add_run("Roorkee, Uttarakhand – 247667")
+    r_loc.font.name = "Calibri"
+    r_loc.font.size = Pt(9)
+    r_loc.font.color.rgb = RGBColor(255, 255, 255)
 
-    p_sub = doc.add_paragraph()
-    p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_sub.paragraph_format.space_after = Pt(14)
-    r_sub = p_sub.add_run("DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING\nBachelor of Technology (Computer Science & Engineering)")
-    r_sub.font.name = "Calibri"
-    r_sub.font.size = Pt(11)
-    r_sub.font.color.rgb = COLOR_SECONDARY
+    # Paragraph P1: Department & Degree
+    p_dept = doc.add_paragraph()
+    p_dept.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_dept.paragraph_format.space_before = Pt(14)
+    p_dept.paragraph_format.space_after = Pt(10)
+    p_dept.paragraph_format.line_spacing = 1.15
+    r_d1 = p_dept.add_run("Department of Computer Science & Engineering ")
+    r_d1.bold = True
+    r_d1.font.name = "Calibri"
+    r_d1.font.size = Pt(11)
+    r_d1.font.color.rgb = RGBColor(0, 0, 0)
+    r_d2 = p_dept.add_run("Bachelor of Technology")
+    r_d2.font.name = "Calibri"
+    r_d2.font.size = Pt(11)
+    r_d2.font.color.rgb = RGBColor(0, 0, 0)
 
-    add_callout_box(
-        "B.Tech. 5th Semester Summer Internship Training Report submitted in partial fulfilment of the requirements for the degree of Bachelor of Technology in Computer Science & Engineering.",
-        "ACADEMIC INTERNSHIP REPORT (SESSION 2025–2026)"
-    )
+    # Table 2: Project Title Box (Light Warm Shading #FFF8EF)
+    t2 = doc.add_table(rows=1, cols=1)
+    t2.alignment = WD_TABLE_ALIGNMENT.CENTER
+    c2 = t2.rows[0].cells[0]
+    c2.width = Inches(6.0)
+    set_cell_background(c2, "FFF8EF")
+    set_cell_margins(c2, top=140, bottom=140, left=180, right=180)
+    set_table_borders(t2, color="D1D5DB", sz="4")
+    p_t2 = c2.paragraphs[0]
+    p_t2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_t2.paragraph_format.space_after = Pt(0)
+    p_t2.paragraph_format.line_spacing = 1.15
+    r_itr = p_t2.add_run("INTERNSHIP TRAINING REPORT ")
+    r_itr.bold = True
+    r_itr.font.name = "Calibri"
+    r_itr.font.size = Pt(15.5)
+    r_itr.font.color.rgb = RGBColor(0, 0, 0)
+    r_sem = p_t2.add_run("(Summer Internship – 2026) \n")
+    r_sem.font.name = "Calibri"
+    r_sem.font.size = Pt(10)
+    r_sem.font.color.rgb = RGBColor(0, 0, 0)
+    r_proj = p_t2.add_run("Project: Basic Analysis of RAG Systems & Development of a Personal Document Q&A Assistant")
+    r_proj.bold = True
+    r_proj.font.name = "Calibri"
+    r_proj.font.size = Pt(10)
+    r_proj.font.color.rgb = RGBColor(0, 0, 0)
 
-    p_proj = doc.add_paragraph()
-    p_proj.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_proj.paragraph_format.space_before = Pt(16)
-    p_proj.paragraph_format.space_after = Pt(4)
-    r_lbl = p_proj.add_run("INTERNSHIP PROJECT TITLE:\n")
-    r_lbl.font.name = "Calibri"
-    r_lbl.font.size = Pt(11)
-    r_lbl.font.color.rgb = COLOR_MUTED
-    r_lbl.bold = True
+    # Paragraph P2: Submitted By
+    p_sb = doc.add_paragraph()
+    p_sb.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_sb.paragraph_format.space_before = Pt(14)
+    p_sb.paragraph_format.space_after = Pt(4)
+    r_sb = p_sb.add_run("Submitted By")
+    r_sb.bold = True
+    r_sb.font.name = "Calibri"
+    r_sb.font.size = Pt(11)
+    r_sb.font.color.rgb = RGBColor(0, 0, 0)
 
-    r_title = p_proj.add_run("Basic Analysis of RAG Systems & Development of a Personal Document Q&A Assistant (RAG Pipeline)")
-    r_title.font.name = "Calibri"
-    r_title.font.size = Pt(15)
-    r_title.bold = True
-    r_title.font.color.rgb = COLOR_PRIMARY
-
-    p_meta_intro = doc.add_paragraph()
-    p_meta_intro.paragraph_format.space_before = Pt(14)
-    p_meta_intro.paragraph_format.space_after = Pt(6)
-    r_mi = p_meta_intro.add_run("Candidate & Host Organisation Profile:")
-    r_mi.bold = True
-    r_mi.font.size = Pt(11)
-    r_mi.font.color.rgb = COLOR_PRIMARY
-
-    meta_headers = ["Student Credentials", "Host Organisation Credentials"]
-    meta_rows = [
-        ["Name: Aditya Kumar", "Organisation: InternCourse (interncourse.online)"],
-        ["Roll No: 024101010012", "Registered Location: Patna, Bihar"],
-        ["Enrolment No: 024101010012", "Managing Director: Ankit Pandey"],
-        ["Semester / Branch: 5th Sem, B.Tech. CSE", "Accreditations: ISO 9001:2015, AICTE, MCA Reg."],
-        ["Faculty Mentor: Pooja Parmar", "Training Domain: Artificial Intelligence & NLP"],
-        ["Head of Department: Dr. Himanshu Verma", "Certificate ID: IC26/11873 | Duration: 6 Weeks"],
-        ["GitHub Repository (Code & Pipeline)", "https://github.com/aditya93416/personal-document-rag-assistant"]
+    # Table 3: Student Details Table (Left Column #D5E3EF, Right Column White)
+    t3_data = [
+        ("Student Name", "Aditya Kumar"),
+        ("Enrolment No.", "024101010012"),
+        ("Semester", "5th Semester"),
+        ("Roll No.", "024101010012"),
+        ("Academic Year", "2025–2026")
     ]
-    add_styled_table(meta_headers, meta_rows, col_widths=[3.25, 3.25])
+    t3 = doc.add_table(rows=len(t3_data), cols=2)
+    t3.alignment = WD_TABLE_ALIGNMENT.CENTER
+    set_table_borders(t3, color="B0C4DE", sz="4")
+    for r_idx, (k, v) in enumerate(t3_data):
+        row = t3.rows[r_idx]
+        cell_k, cell_v = row.cells[0], row.cells[1]
+        cell_k.width = Inches(2.2)
+        cell_v.width = Inches(3.8)
+        set_cell_background(cell_k, "D5E3EF")
+        set_cell_margins(cell_k, top=60, bottom=60, left=120, right=120)
+        set_cell_margins(cell_v, top=60, bottom=60, left=120, right=120)
+        
+        pk = cell_k.paragraphs[0]
+        pk.paragraph_format.space_after = Pt(0)
+        rk = pk.add_run(k)
+        rk.bold = True
+        rk.font.name = "Calibri"
+        rk.font.size = Pt(10)
+        rk.font.color.rgb = RGBColor(0, 0, 0)
 
-    p_date = doc.add_paragraph()
-    p_date.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_date.paragraph_format.space_before = Pt(10)
-    p_date.paragraph_format.space_after = Pt(0)
-    r_d = p_date.add_run("Training Period: 15 June 2026 – 18 July 2026 | Submission Date: October 2026\nHaridwar University, Roorkee, Uttarakhand – 247667")
-    r_d.font.name = "Calibri"
-    r_d.font.size = Pt(9.5)
-    r_d.font.color.rgb = COLOR_MUTED
+        pv = cell_v.paragraphs[0]
+        pv.paragraph_format.space_after = Pt(0)
+        rv = pv.add_run(v)
+        rv.font.name = "Calibri"
+        rv.font.size = Pt(10)
+        rv.font.color.rgb = RGBColor(0, 0, 0)
+
+    # Paragraph P3: Internship Organisation Details
+    p_iod = doc.add_paragraph()
+    p_iod.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_iod.paragraph_format.space_before = Pt(12)
+    p_iod.paragraph_format.space_after = Pt(4)
+    r_iod = p_iod.add_run("Internship Organisation Details")
+    r_iod.bold = True
+    r_iod.font.name = "Calibri"
+    r_iod.font.size = Pt(11)
+    r_iod.font.color.rgb = RGBColor(0, 0, 0)
+
+    # Table 4: Organisation Details Table (Left Column #D5E3EF, Right Column White)
+    t4_data = [
+        ("Organisation Name", "InternCourse (interncourse.online)"),
+        ("Location", "Patna, Bihar"),
+        ("Duration", "15 June 2026 to 18 July 2026 (6 Weeks)"),
+        ("Industry Domain", "Artificial Intelligence & NLP"),
+        ("Supervisor / Mentor", "Ankit Pandey (Managing Director) & Pooja Parmar (Faculty Supervisor)")
+    ]
+    t4 = doc.add_table(rows=len(t4_data), cols=2)
+    t4.alignment = WD_TABLE_ALIGNMENT.CENTER
+    set_table_borders(t4, color="B0C4DE", sz="4")
+    for r_idx, (k, v) in enumerate(t4_data):
+        row = t4.rows[r_idx]
+        cell_k, cell_v = row.cells[0], row.cells[1]
+        cell_k.width = Inches(2.2)
+        cell_v.width = Inches(3.8)
+        set_cell_background(cell_k, "D5E3EF")
+        set_cell_margins(cell_k, top=60, bottom=60, left=120, right=120)
+        set_cell_margins(cell_v, top=60, bottom=60, left=120, right=120)
+        
+        pk = cell_k.paragraphs[0]
+        pk.paragraph_format.space_after = Pt(0)
+        rk = pk.add_run(k)
+        rk.bold = True
+        rk.font.name = "Calibri"
+        rk.font.size = Pt(10)
+        rk.font.color.rgb = RGBColor(0, 0, 0)
+
+        pv = cell_v.paragraphs[0]
+        pv.paragraph_format.space_after = Pt(0)
+        rv = pv.add_run(v)
+        rv.font.name = "Calibri"
+        rv.font.size = Pt(10)
+        rv.font.color.rgb = RGBColor(0, 0, 0)
+
+    # Paragraph P4: Submitted To
+    p_st = doc.add_paragraph()
+    p_st.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_st.paragraph_format.space_before = Pt(14)
+    p_st.paragraph_format.space_after = Pt(0)
+    p_st.paragraph_format.line_spacing = 1.15
+    r_st1 = p_st.add_run("Submitted To \n")
+    r_st1.bold = True
+    r_st1.font.name = "Calibri"
+    r_st1.font.size = Pt(15.5)
+    r_st1.font.color.rgb = RGBColor(0, 0, 0)
+    
+    r_st2 = p_st.add_run("Dr. Himanshu Verma \n")
+    r_st2.bold = True
+    r_st2.font.name = "Calibri"
+    r_st2.font.size = Pt(11)
+    r_st2.font.color.rgb = RGBColor(0, 0, 0)
+
+    r_st3 = p_st.add_run("Head of Department, CSE \nDepartment of Computer Science & Engineering \nHaridwar University, Roorkee ")
+    r_st3.font.name = "Calibri"
+    r_st3.font.size = Pt(11)
+    r_st3.font.color.rgb = RGBColor(0, 0, 0)
+
+    # Paragraph P5: Academic Year
+    p_ay = doc.add_paragraph()
+    p_ay.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_ay.paragraph_format.space_before = Pt(8)
+    p_ay.paragraph_format.space_after = Pt(0)
+    r_ay = p_ay.add_run("Academic Year: 2025 – 2026")
+    r_ay.bold = True
+    r_ay.font.name = "Calibri"
+    r_ay.font.size = Pt(11)
+    r_ay.font.color.rgb = RGBColor(0, 0, 0)
 
     doc.add_page_break()
 
