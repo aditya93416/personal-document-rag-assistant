@@ -43,6 +43,8 @@ Aditya_Kumar_RAG_Project/
 │   ├── Aditya_Kumar_Internship_Report.docx  # Full 23-page academic internship report (Word)
 │   ├── Aditya_Kumar_Internship_Report.pdf   # Compiled PDF report
 │   └── Aditya_Kumar_Cert.pdf                # Official InternCourse certificate
+│   ├── Aditya_Kumar_RAG_Internship_Presentation.pptx  # 10-slide B.Tech. presentation (PPTX)
+│   ├── Aditya_Kumar_RAG_Internship_Presentation.pdf   # Compiled presentation slide deck (PDF)
 ├── sample_docs/
 │   └── rag_internship_overview.txt          # Sample document for indexing benchmarks
 ├── artifacts/
